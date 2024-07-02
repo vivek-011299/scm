@@ -1,0 +1,51 @@
+Smart Contact Manager
+1. User signup with email and password.
+2. Verify account using email verification link/with otp
+3. user signup with google and GitHub
+4. Add contact with picture
+5. Picture stored in aws/cloudinary
+6. user can view all contact
+7. user can view one contact detail
+8. Send an email directly to a contact from our manager app
+9. email contains text or attachments etc.
+10. update the contact
+11. Delete the contact
+12. search the contact
+13. Pagination
+14. Export contacts to excel
+15. Mark favorite contacts
+16. see and edit own profile details
+17. Provide feedback.
+18. Dark light theme
+
+
+Technologies used :
+1. Springboot
+2. Spring framework
+3. Spring MVC
+4. Spring data JPA
+5. OAuth for social login
+6. Validation
+7. Spring security
+8. MySQL database
+9. Java Email services
+10. AWS/Cloudinary SDK
+11. JavaScript
+12. Tailwind css
+13. Flowbite components
+14. pdf/excelfor generating reports
+15. ThymeLeaf template engine (for generating html from backend only. (Alternative of JSP)).
+
+
+Dependencies used in spring project:
+1. Spring boot starter web
+2. Thymeleaf (template engine (responsible for handling dynamic data while creating html page in backend))
+3. Spring data JPA
+4. Bean Validator
+5. Spring security
+6. OAuth2 client
+7. Model mapper
+8. starter mail
+9. Lombok (helps shortening the code (eg: generates getter setter))
+10. Devtools
+11. mysql connector
