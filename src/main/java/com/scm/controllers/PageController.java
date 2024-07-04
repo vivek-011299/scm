@@ -9,6 +9,8 @@ public class PageController {
     @RequestMapping("home")
     public String home(Model model)
     {
+        //adding attribute to model object which is visible to thymeleaf.
+        //thymeleaf is responsible for sending the data to frontend page.
         System.out.println("In home comtroller");
         model.addAttribute("name", "Vivek");
         model.addAttribute("company", "Statestreet");
