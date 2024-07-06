@@ -16,4 +16,21 @@ public class PageController {
         model.addAttribute("company", "Statestreet");
         return "home";
     }
+
+    //about
+    @RequestMapping("/about")
+    public String about(Model model)
+    {
+        model.addAttribute("isLoggedIn", false);
+        System.out.println("In about route");
+        return "about";
+    }
+
+    //services
+    @RequestMapping("/services")
+    public String services(Model model)
+    {
+        System.out.println("Services page");
+        return "services";
+    }
 }
