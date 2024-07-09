@@ -3,6 +3,11 @@ package com.scm.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
 
 @Controller
 public class PageController {
@@ -33,4 +38,21 @@ public class PageController {
         System.out.println("Services page");
         return "services";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/contact")
+    public String contacts() {
+        return new String("contact");
+    }
+    
+    @GetMapping("/register")
+    public String register() {
+        return new String("register");
+    }
+    
+    
 }
