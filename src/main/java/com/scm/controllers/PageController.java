@@ -1,6 +1,9 @@
 package com.scm.controllers;
 
 import com.scm.forms.UserForm;
+import com.scm.model.User;
+import com.scm.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class PageController {
+    @Autowired
+    private UserService userService;
     @RequestMapping("home")
     public String home(Model model)
     {
@@ -60,7 +65,17 @@ public class PageController {
     @PostMapping("/do-register")
     public String processRegister(@ModelAttribute UserForm userForm)
     {
-        return "";
+        //save the user
+        User user = User.builder()
+                .name(userForm.getName())
+                .email(userForm.getEmail())
+                .about(userForm.getAbout())
+                .password(userForm.getPassword())
+                .phoneNumber(userForm.getPhoneNumber())
+                .profilePic("https://drive.google.com/file/d/11eEPtGwNyxNpBv9Qic7Mw8K2cVpO0Rh2/view?usp=drive_link")
+                .build();
+        userService.saveUser(user);
+        return "redirect:/register";
     }
     
     
