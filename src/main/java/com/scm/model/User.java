@@ -1,24 +1,16 @@
 package com.scm.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
+
 import java.util.*;
 
 @Entity
 @Table(name="users")
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@Builder
 public class User {
     @Id
     private String userId;
@@ -39,7 +31,8 @@ public class User {
     private boolean phoneVerified = false;
 
     //Provider
-    private Provider providerName;
+    @Enumerated
+    private Provider providerName = Provider.SELF;
     private String providerId;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
