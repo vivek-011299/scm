@@ -9,5 +9,4 @@ import lombok.*;
 @NoArgsConstructor
 public class Message {
     private String content;
-    private MessageType msgType = MessageType.blue;
 }

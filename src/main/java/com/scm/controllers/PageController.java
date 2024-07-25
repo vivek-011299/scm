@@ -2,13 +2,14 @@ package com.scm.controllers;
 
 import com.scm.forms.UserForm;
 import com.scm.helpers.Message;
-import com.scm.helpers.MessageType;
 import com.scm.model.User;
 import com.scm.services.UserService;
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,8 +67,14 @@ public class PageController {
     }
 
     @PostMapping("/do-register")
-    public String processRegister(@ModelAttribute UserForm userForm, HttpSession session)
+    public String processRegister(@Valid @ModelAttribute UserForm userForm, BindingResult bindingResult, HttpSession session)
     {
+        //Validate the user details entered in the form.
+        if(bindingResult.hasErrors())
+        {
+            return "register";
+        }
+
         //save the user
         User user = new User();
         user.setAbout(userForm.getAbout());
@@ -77,8 +84,8 @@ public class PageController {
         user.setEmail(userForm.getEmail());
         user.setProfilePic("some link");
         userService.saveUser(user);
-        Message msg = Message.builder().content("Registration Sucessfull").msgType(MessageType.green).build();
-        session.setAttribute("message", msg);
+        Message message = Message.builder().content("Registration Sucessful").build();
+        session.setAttribute("message", message);
         return "redirect:/register";
     }
     
