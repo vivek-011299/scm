@@ -1,5 +1,6 @@
 package com.scm.services.impl;
 
+import com.scm.helpers.AppConstants;
 import com.scm.helpers.ResourceNotFoundException;
 import com.scm.model.User;
 import com.scm.repo.UserRepo;
@@ -21,6 +22,7 @@ public class UserServiceImpl implements UserService {
         //We have to generate user_id by ourself
         String user_id = UUID.randomUUID().toString();
         user.setUserId(user_id);
+        user.setRoleList(List.of(AppConstants.ROLE_USER));
         return userRepo.save(user);
     }
 
