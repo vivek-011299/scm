@@ -6,6 +6,7 @@ import com.scm.model.User;
 import com.scm.repo.UserRepo;
 import com.scm.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,12 +17,18 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     private UserRepo userRepo;
     @Override
     public User saveUser(User user) {
         //We have to generate user_id by ourself
         String user_id = UUID.randomUUID().toString();
         user.setUserId(user_id);
+        // password encode
+        // user.setPassword(userId);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoleList(List.of(AppConstants.ROLE_USER));
         return userRepo.save(user);
     }

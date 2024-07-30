@@ -30,7 +30,7 @@ public class User implements UserDetails {
     private String about;
 
     //boolean values
-    private boolean enabled;
+    private boolean enabled = true;
     private boolean emailVerified = false;
     private boolean phoneVerified = false;
 
