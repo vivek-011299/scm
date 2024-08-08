@@ -27,7 +27,7 @@ Technologies used :
 5. OAuth for social login
 6. Validation
 7. Spring security
-8. MySQL database
+8. MySQL database++
 9. Java Email services
 10. AWS/Cloudinary SDK
 11. JavaScript
